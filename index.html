@@ -3,71 +3,225 @@
 <head>
   <meta charset="utf-8">
   <title>whetstone - track your reading effortlessly</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Track reading progress, take notes, and sync across Apple devices. Free, simple, private reading companion app.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://whetstone-books.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whetstone-books.com/">
+  <meta property="og:title" content="Whetstone Books - Track Your Reading Effortlessly">
+  <meta property="og:description" content="Log progress, take notes, highlight key quotes. A simple, private reading companion app for iPhone, iPad, and Mac.">
+  <meta property="og:image" content="https://whetstone-books.com/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://whetstone-books.com/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Whetstone Books app icon - Track your reading progress">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <!-- Preload hero image for faster render -->
+  <link rel="preload" as="image" type="image/webp" href="assets/images/app-icon-768w.webp">
+
+  <!-- DNS prefetch for App Store -->
+  <link rel="dns-prefetch" href="https://apps.apple.com">
+
+  <!-- Critical CSS -->
+  <style>
+    /* general */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0;
+      font-family: -apple-system, blinkmacsystemfont, "segoe ui", roboto, sans-serif;
+      color: #333; line-height: 1.5;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+    main { flex: 1; }
+
+    /* header */
+    .header {
+      display: flex; align-items: center; padding: 1rem 2rem;
+      border-bottom: 1px solid #ddd; background: #fff;
+    }
+    .header-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .header-logo { width: 32px; height: 32px; border-radius: 8px; }
+    .header h1 {
+      margin: 0; font-size: 1.5rem; font-weight: 600;
+    }
+
+    /* hero */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #e66465, #9198e5);
+      color: #fff; text-align: center; padding: 3rem 1rem 5rem;
+    }
+    .hero-content { max-width: 650px; margin: 0 auto; }
+    .hero-content h2 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .hero-content p { font-size: 1.2rem; font-weight: 300; margin-bottom: 2rem; opacity: 0.95; }
+
+    /* social proof */
+    .social-proof { margin: 1rem 0; font-size: 0.9rem; }
+    .rating { color: #FFD700; font-size: 1rem; margin-right: 0.5rem; }
+    .rating-text { color: #fff; opacity: 0.9; }
+
+    /* store button */
+    .store-buttons { margin-top: 2rem; }
+    .store-badge {
+      display: inline-block; background: #fff; color: #333;
+      padding: 1rem 2rem; text-decoration: none; border-radius: 50px;
+      font-size: 1rem; font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
+  </style>
+
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
+
+  <!-- Additional enhancements -->
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Whetstone Books",
+    "description": "Track reading progress, take notes, and highlight key quotes. A simple, private reading companion app for iPhone, iPad, and Mac.",
+    "operatingSystem": ["iOS", "iPadOS", "macOS"],
+    "applicationCategory": "BookApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "2"
+    },
+    "url": "https://apps.apple.com/us/app/whetstone-books/id1620581442",
+    "downloadUrl": "https://apps.apple.com/us/app/whetstone-books/id1620581442",
+    "author": {
+      "@type": "Person",
+      "name": "Phaedrus Raznikov"
+    }
+  }
+  </script>
+
+  <!-- Performance optimization script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const features = document.querySelectorAll('.feature');
+
+      features.forEach(feature => {
+        let hoverTimeout;
+
+        // Preload will-change on touch/mouse enter with 50ms delay
+        const prepareTransform = () => {
+          hoverTimeout = setTimeout(() => {
+            feature.style.willChange = 'transform';
+          }, 50);
+        };
+
+        // Clean up will-change on touch/mouse leave
+        const cleanupTransform = () => {
+          clearTimeout(hoverTimeout);
+          feature.style.willChange = 'auto';
+        };
+
+        feature.addEventListener('mouseenter', prepareTransform);
+        feature.addEventListener('touchstart', prepareTransform);
+        feature.addEventListener('mouseleave', cleanupTransform);
+        feature.addEventListener('touchend', cleanupTransform);
+      });
+    });
+  </script>
 </head>
 <body>
+  <main>
+    <!-- header -->
+    <header class="header">
+      <div class="header-brand">
+        <img src="assets/apple-touch-icon.png" alt="Whetstone Books" class="header-logo">
+        <h1>Whetstone Books</h1>
+      </div>
+    </header>
 
-  <!-- header -->
-  <header class="header">
-    <h1>whetstone books</h1>
-  </header>
+    <!-- hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Sharpen Your Reading</h2>
+        <p>log progress, jot notes, highlight key quotes. read. remember. flourish.</p>
+        <div class="social-proof">
+          <span class="rating">★★★★★</span>
+          <span class="rating-text">5.0 on App Store</span>
+        </div>
+        <div class="store-buttons">
+          <a href="https://apps.apple.com/us/app/whetstone-books/id1620581442?platform=iphone" class="store-badge" aria-label="Download Whetstone Books on the App Store">
+            Download Free
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <!-- hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <h2>sharpen your reading prowess</h2>
-      <p>log progress, jot notes, highlight key quotes. read. remember. flourish.</p>
-      <div class="store-buttons">
-        <a href="https://apps.apple.com/us/app/whetstone-books/id1620581442?platform=iphone" class="store-badge">
-          download for iphone
+    <!-- features -->
+    <section class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <path d="m9 9.5 2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Never Lose Your Place</h3>
+        <p>simple logging for every book you read. accurate progress tracking.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+            <path d="m15 5 4 4"/>
+          </svg>
+        </div>
+        <h3>Remember What Matters</h3>
+        <p>capture important passages and insights. remember what matters most.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+            <path d="M22 10a3 3 0 0 0-3-3h-2.207a5.502 5.502 0 0 0-10.702.5"/>
+          </svg>
+        </div>
+        <h3>iPhone, iPad, Mac - Always in Sync</h3>
+        <p>keep everything synced. never lose notes when your device fails.</p>
+      </div>
+    </section>
+
+    <!-- cta -->
+    <section class="cta">
+      <h2>Ready to Track Your Reading?</h2>
+      <p>free • no ads • private • your data stays on your device</p>
+      <div class="cta-buttons">
+        <a href="https://apps.apple.com/us/app/whetstone-books/id1620581442?platform=iphone" class="cta-button primary" aria-label="Download Whetstone Books free on the App Store">
+          Download Free
         </a>
       </div>
-    </div>
-  </section>
-
-  <!-- features -->
-  <section class="features">
-    <div class="feature">
-      <div class="icon-area">
-        <!-- feel free to swap with cooler icons or images -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512">
-          <path fill="currentColor" d="m256 48c-114.9 0-208 93.1-208..."/>
-        </svg>
-      </div>
-      <h3>track reading</h3>
-      <p>effortless logs for every book you crack open. no guesswork, all data.</p>
-    </div>
-
-    <div class="feature">
-      <div class="icon-area">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512">
-          <path fill="currentColor" d="m256 48c-114.9 0-208 93.1-208..."/>
-        </svg>
-      </div>
-      <h3>add notes & highlights</h3>
-      <p>capture those eureka excerpts for posterity. future you shall vibe.</p>
-    </div>
-
-    <div class="feature">
-      <div class="icon-area">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512">
-          <path fill="currentColor" d="m256 48c-114.9 0-208 93.1-208..."/>
-        </svg>
-      </div>
-      <h3>sync across devices</h3>
-      <p>keep it all cosmic. no more missing notes if your phone bruhs out.</p>
-    </div>
-  </section>
-
-  <!-- cta -->
-  <section class="cta">
-    <h2>ready to refine your reading vibes?</h2>
-    <p>snag whetstone now, it's freeee. the next highlight might blow your mind.</p>
-    <a href="https://apps.apple.com/us/app/whetstone-books/id1620581442?platform=iphone" class="cta-button">
-      get it now
-    </a>
-  </section>
+    </section>
+  </main>
 
   <!-- footer -->
   <footer class="footer">

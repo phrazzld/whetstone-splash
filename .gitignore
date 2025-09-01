@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+package-lock.json
+
+# macOS
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
